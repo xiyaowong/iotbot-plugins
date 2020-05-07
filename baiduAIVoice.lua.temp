@@ -1,0 +1,31 @@
+local log = require("log")
+local Api = require("coreApi")
+local json = require("json")
+local http = require("http")
+
+ACCESS_TOKEN = "24.28754f1e54c5bdcbc3a8c978b4c3d50c.2592000.1591064253.282335-19703295"
+text = "Hello"
+
+function ReceiveFriendMsg(CurrentQQ, data)
+    response = http.request(
+        "POST",
+        "https://tsn.baidu.com/text2audio",
+        -- "http://localhost:3456/",
+        {
+            body = "tex="..text.."&lan=zh&cuid=123456&ctp=1&aue=3&tok="..ACCESS_TOKEN,
+            headers = {
+                Accept = "application/json"
+            }
+        }
+    )
+    print(json.decode(response.body))
+    return 1
+end
+
+function ReceiveGroupMsg(CurrentQQ, data)
+    return 1
+end
+
+function ReceiveEvents(CurrentQQ, data, extData)
+    return 1
+end
