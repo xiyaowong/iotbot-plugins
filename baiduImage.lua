@@ -43,7 +43,7 @@ function ReceiveGroupMsg(CurrentQQ, data)
     )
     html = response.body
     imgs = json.decode(html)
-    if #imgs == 0 then
+    if imgs[0] == nil then
         Api.Api_SendMsg(
             CurrentQQ,
             {
