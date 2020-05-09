@@ -29,7 +29,7 @@ end
         data.MsgRandom      消息RANDOM                int
 ]]
 function ReceiveGroupMsg(CurrentQQ, data)
-    local menu = "\n.menu 查看菜单".."\n.short <长链接> 生成短链接".."\n.st <题目> 搜题".."\n.bk <关键词> 百度百科搜索".."\n.weibo 微博热搜榜".."\n.lssdjt 历史上今天"
+    local menu = "\n.menu 查看菜单".."\n.short <长链接> 生成短链接".."\n.st <题目> 搜题".."\n.bk <关键词> 百度百科搜索".."\n.weibo 微博热搜榜".."\n.lssdjt 历史上今天".."\n.pic <关键字> 百度图片搜索"
     if data.Content == ".menu" then
         Api.Api_SendMsg(
             CurrentQQ,
