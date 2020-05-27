@@ -17,7 +17,7 @@ function ReceiveGroupMsg(CurrentQQ, data)
               content = "",
               groupid = 0,
               atUser = 0,
-              picUrl = "http://127.0.0.1:8080/pix/",
+              picUrl = "http://127.0.0.1:8080/pixivic/",
               picBase64Buf = "",
               fileMd5 = ""
             }
