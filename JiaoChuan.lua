@@ -57,7 +57,7 @@ function ReceiveGroupMsg(CurrentQQ, data)
     if data.Content == '@x@' then
         math.randomseed(os.time())
 
-        local nums = {0, 0, 0, 0, 1}
+        local nums = {0, 0, 0, 0, 0, 0, 1}
         if nums[math.random(1, #nums)] == 0 then
             local emojis = {'🤔', '🙈', '🙉', '🙊', '👴', '🈲', '🔞', '🌚', '💩', '👀'}
             emoji = emojis[math.random(1, #emojis)]
