@@ -54,24 +54,11 @@ function ReceiveGroupMsg(CurrentQQ, data)
     if data.FromUserId == tonumber(CurrentQQ) then
         return 1
     end
-    if data.Content == '@x@' then
+    if string.find(data.Content, '色图') then
         math.randomseed(os.time())
 
-        local nums = {0, 0, 0, 0, 0, 0, 1}
+        local nums = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
         if nums[math.random(1, #nums)] == 0 then
-            local emojis = {'🤔', '🙈', '🙉', '🙊', '👴', '🈲', '🔞', '🌚', '💩', '👀'}
-            emoji = emojis[math.random(1, #emojis)]
-            Api.Api_SendMsg(
-                CurrentQQ,
-                {
-                    toUser = data.FromGroupId,
-                    sendToType = 2,
-                    sendMsgType = "TextMsg",
-                    groupid = 0,
-                    content = emoji,
-                    atUser = 0
-                }
-            )
             return 1
         end
 
