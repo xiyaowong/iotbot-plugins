@@ -11,7 +11,7 @@ function ReceiveGroupMsg(CurrentQQ, data)
     if data.FromUserId == tonumber(CurrentQQ) then
         return 1
     end
-    if data.MsgType == 'PicMsg' and (data.Content:find('请使用新版手机QQ查看闪照') or data.Content:find('群消息-QQ闪照')) then
+    if data.MsgType == 'PicMsg' and data.Content:find('群消息-QQ闪照') then
         api.Api_SendMsg(
             CurrentQQ,
             {
