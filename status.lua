@@ -14,12 +14,12 @@ function ReceiveGroupMsg(CurrentQQ, data)
     end
     if data.Content:find('status') or data.Content:find('状态') then
         local body = http.request('GET', api).body
-        local data = json.decode(body)
+        local info = json.decode(body)
         local status = string.format(
             'ClusterIP: %s\nPlatform: %s\nArch: %s\nServerRuntime: %s\nVersion: %s',
-            data.ClusterIP, data.Platform, data.GoArch, data.ServerRuntime, data.Version
+            info.ClusterIP, info.Platform, info.GoArch, info.ServerRuntime, info.Version
         )
-        for _, user in ipairs(data.QQUsers) do
+        for _, user in ipairs(info.QQUsers) do
             local userInfo = string.format(
                 '\n------\nQQ: %s\nInfo: %s',
                 user.QQ, user.UserLevelInfo
