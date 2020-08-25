@@ -1,6 +1,7 @@
 -- 集群信息
 local Api = require("coreApi")
 local http = require("http")
+local json = require("json")
 
 function ReceiveFriendMsg(CurrentQQ, data) return 1 end
 function ReceiveEvents(CurrentQQ, data, extData) return 1 end
@@ -13,7 +14,6 @@ function ReceiveGroupMsg(CurrentQQ, data)
     end
     if data.Content:find('status') or data.Content:find('状态') then
         local body = http.request('GET', api).body
-        print(body)
         local data = json.decode(body)
         local status = string.format(
             'ClusterIP: %s\nPlatform: %s\nArch: %s\nServerRuntime: %s\nVersion: %s',
