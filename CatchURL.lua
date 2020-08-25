@@ -15,15 +15,15 @@ function ReceiveGroupMsg(CurrentQQ, data)
 		local url = xml:match([[url=%"(.-)%"]])
 		if url ~= nil then
 			Api.Api_SendMsg(
-					CurrentQQ,
-					{
-							toUser = data.FromGroupId,
-							sendToType = 2,
-							sendMsgType = "TextMsg",
-							groupid = 0,
-							content = url,
-							atUser = data.FromUserId
-					}
+                CurrentQQ,
+                {
+                    toUser = data.FromGroupId,
+                    sendToType = 2,
+                    sendMsgType = "TextMsg",
+                    groupid = 0,
+                    content = url,
+                    atUser = data.FromUserId
+                }
 			)
 		end
 	elseif data.MsgType == 'JsonMsg' then
