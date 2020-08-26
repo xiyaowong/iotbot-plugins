@@ -21,7 +21,7 @@ function checkUser(id)
             return false
         end
     end
-    users:insert(id)
+    table.insert(users, id)
     local f_w, _ = io.open(cacheFileName, 'w')
     f_w:write(json.encode(users))
     f_w:close()
