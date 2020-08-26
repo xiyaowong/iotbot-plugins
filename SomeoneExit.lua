@@ -21,4 +21,5 @@ function ReceiveEvents(CurrentQQ, data, extData)
             }
         )
     end
+    return 1
 end

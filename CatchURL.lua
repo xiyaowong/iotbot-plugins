@@ -26,7 +26,8 @@ function ReceiveGroupMsg(CurrentQQ, data)
                 }
 			)
 		end
-	elseif data.MsgType == 'JsonMsg' then
+    elseif data.MsgType == 'JsonMsg' then
 		-- local data = json.decode(data.Content)
 	end
+    return 1
 end

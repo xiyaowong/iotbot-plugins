@@ -38,5 +38,5 @@ function ReceiveGroupMsg(CurrentQQ, data)
             }
         )
     end
-    return 2
+    return 1
 end

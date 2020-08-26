@@ -41,6 +41,7 @@ function ReceiveGroupMsg(CurrentQQ, data)
 
         end
     end
+    return 1
 end
 
 

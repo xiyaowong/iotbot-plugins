@@ -21,6 +21,7 @@ function ReceiveGroupMsg(CurrentQQ, data)
             return 2
         end
     end
+    return 1
 end
 
 function ReceiveFriendMsg(CurrentQQ, data)
