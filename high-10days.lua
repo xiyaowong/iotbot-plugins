@@ -1,32 +1,34 @@
--- dog => 舔狗日记
+-- 近10天全国最高气温实况图
 local Api = require("coreApi")
 local http = require("http")
+local json = require("json")
 
 function ReceiveFriendMsg(CurrentQQ, data) return 1 end
 function ReceiveEvents(CurrentQQ, data, extData) return 1 end
-
-local urls = {
-    "http://www.vizy8.cn/api2/tgrj/api.php",
-    "http://test.isiyuan.net/tiangou/tg.php"
-}
 
 function ReceiveGroupMsg(CurrentQQ, data)
     if data.FromUserId == tonumber(CurrentQQ) then
         return 1
     end
-    if data.Content == 'dog' or data.Content == '舔狗日记' then
-        math.randomseed(os.time())
+
+    if data.Content:find('最高气温实况') then
+        local body = http.request('GET', 'http://www.nmc.cn/rest/relevant/35').body
+        local info = json.decode(body)
         Api.Api_SendMsg(
             CurrentQQ,
             {
                 toUser = data.FromGroupId,
                 sendToType = 2,
-                sendMsgType = "TextMsg",
+                sendMsgType = "PicMsg",
+                content = '',
                 groupid = 0,
-                content = '\n'..http.request('GET', urls[math.random(1,#urls)]).body,
-                atUser = data.FromUserId
+                atUser = 0,
+                picUrl = "http://image.nmc.cn"..info[1].image,
+                picBase64Buf = "",
+                fileMd5 = ""
             }
         )
     end
     return 1
 end
+

@@ -1,32 +1,30 @@
--- dog => 舔狗日记
+-- 台风报文
 local Api = require("coreApi")
 local http = require("http")
 
 function ReceiveFriendMsg(CurrentQQ, data) return 1 end
 function ReceiveEvents(CurrentQQ, data, extData) return 1 end
 
-local urls = {
-    "http://www.vizy8.cn/api2/tgrj/api.php",
-    "http://test.isiyuan.net/tiangou/tg.php"
-}
-
 function ReceiveGroupMsg(CurrentQQ, data)
     if data.FromUserId == tonumber(CurrentQQ) then
         return 1
     end
-    if data.Content == 'dog' or data.Content == '舔狗日记' then
-        math.randomseed(os.time())
+
+    if data.Content == '台风报文' then
+        local body = http.request('GET', 'http://m.nmc.cn/publish/typhoon/message.html').body
+        local msg = body:match([[<p align=left>(.+)<br></p>]]):gsub('<br>', '\n')
         Api.Api_SendMsg(
             CurrentQQ,
             {
                 toUser = data.FromGroupId,
                 sendToType = 2,
                 sendMsgType = "TextMsg",
+                content = msg,
                 groupid = 0,
-                content = '\n'..http.request('GET', urls[math.random(1,#urls)]).body,
-                atUser = data.FromUserId
+                atUser = 0,
             }
         )
     end
     return 1
 end
+
