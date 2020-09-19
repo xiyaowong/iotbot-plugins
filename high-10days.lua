@@ -28,6 +28,7 @@ function ReceiveGroupMsg(CurrentQQ, data)
                 fileMd5 = ""
             }
         )
+        return 2
     end
     return 1
 end

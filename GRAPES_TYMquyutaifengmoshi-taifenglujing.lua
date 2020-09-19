@@ -1,4 +1,4 @@
--- FY4A真彩色
+-- GRAPES_TYM台风路径
 local Api = require("coreApi")
 local http = require("http")
 
@@ -10,8 +10,8 @@ function ReceiveGroupMsg(CurrentQQ, data)
         return 1
     end
 
-    if data.Content:find('真彩色') then
-        local resp = http.request('GET', 'http://m.nmc.cn/publish/satellite/FY4A-true-color.htm')
+    if data.Content:find('GRAPES_TYM台风路径') or data.Content:find('GT台风路径') then
+        local resp = http.request('GET', 'http://m.nmc.cn/publish/shuzhiyubao/GRAPES_TYMquyutaifengmoshi/taifenglujing/index.html')
         if resp ~= nil then
             local body = resp.body
             local url = body:match([[data%-src="(.-)".+<div class=swiper%-button%-prev>]])

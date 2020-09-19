@@ -1,4 +1,4 @@
--- FY4A真彩色
+-- FY2G水汽增强图
 local Api = require("coreApi")
 local http = require("http")
 
@@ -10,8 +10,8 @@ function ReceiveGroupMsg(CurrentQQ, data)
         return 1
     end
 
-    if data.Content:find('真彩色') then
-        local resp = http.request('GET', 'http://m.nmc.cn/publish/satellite/FY4A-true-color.htm')
+    if data.Content:find('2g水汽增强图') or data.Content:find('2G水汽增强图') then
+        local resp = http.request('GET', 'http://m.nmc.cn/publish/satellite/fy2e/water_vapor.html')
         if resp ~= nil then
             local body = resp.body
             local url = body:match([[data%-src="(.-)".+<div class=swiper%-button%-prev>]])

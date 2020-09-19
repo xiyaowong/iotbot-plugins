@@ -24,6 +24,7 @@ function ReceiveGroupMsg(CurrentQQ, data)
                 atUser = 0,
             }
         )
+        return 2
     end
     return 1
 end

@@ -11,7 +11,7 @@ function ReceiveGroupMsg(CurrentQQ, data)
         return 1
     end
 
-    if data.Content:find('能见度') then
+    if data.Content == '能见度' then
         local body = http.request('GET', 'http://www.nmc.cn/rest/relevant/35').body
         local info = json.decode(body)
         Api.Api_SendMsg(
@@ -28,6 +28,7 @@ function ReceiveGroupMsg(CurrentQQ, data)
                 fileMd5 = ""
             }
         )
+        return 2
     end
     return 1
 end
