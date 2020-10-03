@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 import base64
+import pathlib
 import re
 import sys
 
@@ -9,9 +10,18 @@ try:
 except ImportError:
     sys.exit('请安装依赖: pip install qrcode requests')
 
-ip = '127.0.0.1'
-port = 8888
-login_url = f'http://{ip}:{port}/v1/Login/GetQRcode'
+with open(
+    pathlib.Path(__file__).absolute().parent.parent.parent / 'CoreConf.conf'
+) as f:
+    for i in f.readlines():
+        if re.findall(r':(\d+)', i):
+            port = re.findall(r':(\d+)', i)[0]
+            port = int(port)
+            break
+    else:
+        sys.exit('读取配置错误')
+
+login_url = f'http://127.0.0.1:{port}/v1/Login/GetQRcode'
 
 
 def main():
