@@ -12,7 +12,7 @@ function ReceiveGroupMsg(CurrentQQ, data)
                 toUser = data.FromGroupId,
                 sendToType = 2,
                 sendMsgType = "PicMsg",
-                picUrl = 'http://yanxi520.xyz/api/60s/min.php?address=1&name='..data.FromNickName..' ',
+                picUrl = 'http://yanxi520.xyz/api/60s/min.php?address=1&name=%E5%B0%8F%E5%8A%A9%E6%89%8B',
             }
         )
     end
